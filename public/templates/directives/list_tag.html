@@ -1,0 +1,15 @@
+<div class="list-box col-xs-12">
+  <h4 ng-hide="editTitle" ng-click="editTitle = !editTitle"class="list-title">{{list.title}}</h4>
+
+  <form ng-show="editTitle" name="titleform" ng-submit="updateList()">
+    <label>
+      <input class="form-control" type="text" name="title" ng-model="formData.title" required autofocus>
+    </label>
+    <input
+      class="btn btn-primary" type="submit" ng-disabled="titleform.$invalid">
+    <a ng-click="editTitle = !editTitle">Cancel</a>
+  </form>
+
+  <p>{{list.description}}</p><hr>
+  <a style="float: right" ng-click="removeList()"><small>Delete List</small></a>
+</div>

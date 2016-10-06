@@ -1,0 +1,18 @@
+// Place all the styles related to the lists controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.list-box {
+  margin-top: 5px;
+  border: 1px black solid;
+  border-radius: 4px;
+  font-size: 14px;
+  .list-title{
+    text-align: center;
+  }
+}
+
+.new-list {
+  margin-top: 10px;
+  text-align: center;
+}

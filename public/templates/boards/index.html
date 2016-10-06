@@ -1,0 +1,15 @@
+<div class="row">
+  <h2>Your Boards</h2>
+  <div class="col-xs-3" ng-repeat="board in boards">
+    <a ui-sref="boards.show({id: board.id})">
+      <div ui-sref="boards.show({id: board.id})" class="board-box">
+      <p>{{board.title}}</p>
+      </div>
+    </a>
+  </div>
+  <div class="col-xs-3">
+    <div class="new-board" ng-click="addBoard()">
+    <p>Create new board..</p>
+    </div>
+  </div>
+</div>
