@@ -9,6 +9,7 @@
 User.destroy_all
 Board.destroy_all
 List.destroy_all
+Card.destroy_all
 
 puts 'creating users with board'
 user1 = User.create(email: 'louisck@gmail.com', password: 'asdfasdf')
@@ -22,6 +23,20 @@ board3 = user3.boards.create(title: "The random board")
 user3.boards.create(title: "The randomest board")
 
 puts 'creating lists'
-board1.lists.create(title: "list 1", description: "this is list 1")
-board2.lists.create(title: "list 2", description: "this is list 2")
-board3.lists.create(title: "list 3", description: "this is list 3")
+list1 = board1.lists.create(title: "cool list", description: "this is a list")
+list2 = board2.lists.create(title: "lame list", description: "this is a list")
+list3 = board3.lists.create(title: "random list", description: "this is a list")
+
+puts 'creating cards'
+card1 = list1.cards.create(title: "cool task", description: "this is a task to do")
+card1.users << user1
+card2 = list1.cards.create(title: "cooler task", description: "this is a task to do")
+card2.users << user1
+card3 = list2.cards.create(title: "lame task", description: "this is a task to do")
+card3.users << user2
+card4 = list2.cards.create(title: "lamer task", description: "this is a task to do")
+card4.users << user2
+card5 = list3.cards.create(title: "random task", description: "this is a task to do")
+card5.users << user3
+card6 = list3.cards.create(title: "randomest task", description: "this is a task to do")
+card6.users << user3

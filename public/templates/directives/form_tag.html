@@ -1,0 +1,8 @@
+<form ng-show="flip" name="tagForm" ng-submit="update({data: formData}); resetForm()">
+  <label>
+    <input class="form-control" type="text" name="tagItem" ng-model="formData[attr]" required autofocus placeholder="update info..">
+  </label>
+  <input
+    class="btn btn-primary" type="submit" ng-disabled="tagForm.$invalid">
+  <a ng-click="flip = !flip">Cancel</a>
+</form>

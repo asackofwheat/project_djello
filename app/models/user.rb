@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   has_many :user_boards
   has_many :boards, through: :user_boards
+
+  has_many :card_users
+  has_many :cards, through: :card_users
 end

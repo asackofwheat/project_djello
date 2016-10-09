@@ -1,0 +1,41 @@
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="close('Cancel')" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 ng-hide="title" ng-click="title = !title" class="modal-title">{{card.title}}</h3>
+        <form-tag flip="title" update="updateCard(data)" attr="title"></form-tag>
+        <small>from {{list.title}}</small>
+        <a ng-click="removeCard(); close('Cancel')" class="close" data-dismiss="modal" aria-hidden="true"><small style="float: right">Mark Completed</small></a>
+      </div>
+
+      <div class="modal-body">
+        <p ng-hide="desc">{{card.description}}</p>
+        <a ng-hide="desc" ng-click="desc = !desc"><small>Edit Description</small></a>
+
+        <form-tag flip="desc" update="updateCard(data)" attr="description"></form-tag><hr>
+        
+        <div>
+          <h4>Members</h4>
+
+          <div ng-repeat="member in card.users">
+            <p><span>{{member.email}}</span>
+              <span ng-click="" style="float: right">remove</span>
+            </p>
+          </div>
+
+        </div><hr>
+
+        <div>
+          <h4>Activity</h4>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" ng-click="close('Yes')" class="btn btn-primary" data-dismiss="modal">Done</button>
+      </div>
+
+    </div>
+  </div>
+</div>

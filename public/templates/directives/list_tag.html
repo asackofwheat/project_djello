@@ -1,15 +1,16 @@
 <div class="list-box col-xs-12">
-  <h4 ng-hide="editTitle" ng-click="editTitle = !editTitle"class="list-title">{{list.title}}</h4>
+  <h4 ng-hide="editTitle" ng-click="editTitle = !editTitle" class="list-title">{{list.title}}</h4>
+  <form-tag flip="editTitle" update="updateList(data)" attr="title"></form-tag><hr>
 
-  <form ng-show="editTitle" name="titleform" ng-submit="updateList()">
-    <label>
-      <input class="form-control" type="text" name="title" ng-model="formData.title" required autofocus>
-    </label>
-    <input
-      class="btn btn-primary" type="submit" ng-disabled="titleform.$invalid">
-    <a ng-click="editTitle = !editTitle">Cancel</a>
-  </form>
+  <p ng-hide="editDesc" ng-click="editDesc = !editDesc">{{list.description}}</p>
+  <form-tag flip="editDesc" update="updateList(data)" attr="description"></form-tag><hr>
 
-  <p>{{list.description}}</p><hr>
+  <div ng-repeat="card in list.cards">
+    <card-tag card="card" list="list" board="board"></card-tag>
+  </div>
+
+  <a ng-hide="cardAdd" ng-click="cardAdd = !cardAdd"><small>Add Card</small></a>
+  <form-tag flip="cardAdd" update="addCard(data)" attr="title"></form-tag>
+
   <a style="float: right" ng-click="removeList()"><small>Delete List</small></a>
 </div>

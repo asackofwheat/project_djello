@@ -1,4 +1,4 @@
-Djello.controller('BoardsIndexCtrl', ['$scope', 'boardList', '$state', 'BoardService', function($scope, boardList, $state, BoardService){
+Djello.controller('BoardsIndexCtrl', ['$scope', 'boardList', '$state', 'BoardService', 'ModalService', function($scope, boardList, $state, BoardService, ModalService){
 
   $scope.boards = boardList
 

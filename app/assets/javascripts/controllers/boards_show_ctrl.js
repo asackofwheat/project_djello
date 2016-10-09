@@ -23,7 +23,7 @@ Djello.controller('BoardsShowCtrl', ['$scope', 'board', 'boardList', '$state', '
 
   $scope.updateBoard = function() {
     BoardService.updateBoard($scope.formData, $scope.board).then(function(response){
-      $scope.board = response;
+      angular.copy(response, $scope.board);
       $scope.editForm = false;
       $scope.formData = {};
     })
@@ -35,7 +35,13 @@ Djello.controller('BoardsShowCtrl', ['$scope', 'board', 'boardList', '$state', '
 
   $scope.$on('list.remove', function(){
     BoardService.getBoard($scope.board.id).then(function(response){
-      $scope.board = response;
+      angular.copy(response, $scope.board);
+    })
+  });
+
+  $scope.$on('card.remove', function(){
+    BoardService.getBoard($scope.board.id).then(function(response){
+      angular.copy(response, $scope.board);
     })
   });
 

@@ -37,7 +37,7 @@ Djello.factory('BoardService', ['Restangular', 'ListService', function(Restangul
 
   stub.updateBoard = function(params, board) {
     return board.patch(params).then(function(response) {
-      angular.copy(populateBoards(), _boards);
+      // angular.copy(populateBoards(), _boards);
       return response
     })
   };

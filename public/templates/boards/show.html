@@ -14,7 +14,7 @@
 
     <form ng-show="editForm" name="titleform" ng-submit="updateBoard()">
       <label>
-        <input class="form-control" type="text" name="title" ng-model="formData.title" required>
+        <input class="form-control" type="text" name="title" ng-model="formData.title" required placeholder="update title..">
       </label>
       <input class="btn btn-primary" type="submit" ng-disabled="titleform.$invalid">
       <a ng-click="editForm = !editForm">Cancel</a>
