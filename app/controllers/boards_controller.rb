@@ -11,7 +11,7 @@ class BoardsController < ApplicationController
     @board = Board.find(params[:id])
     if @board.users.include?(current_user)
       respond_to do |format|
-        format.json {render json: @board, include: [:users, {lists: {include: {cards: {include: :users}}}}]}
+        format.json {render json: @board, include: [:users, {lists: {include: {cards: {include: [:users, :activities]}}}}]}
       end
     end
   end
@@ -20,7 +20,7 @@ class BoardsController < ApplicationController
     @board = current_user.boards.build(board_params)
     if current_user.save
       respond_to do |format|
-        format.json {render json: @board, include: [:users, {lists: {include: {cards: {include: :users}}}}]}
+        format.json {render json: @board, include: [:users, {lists: {include: {cards: {include: [:users, :activities]}}}}]}
       end
     end
   end
@@ -30,7 +30,7 @@ class BoardsController < ApplicationController
     if @board.users.include?(current_user)
       if @board.update(board_params)
         respond_to do |format|
-          format.json {render json: @board, include: [:users, {lists: {include: {cards: {include: :users}}}}]}
+          format.json {render json: @board, include: [:users, {lists: {include: {cards: {include: [:users, :activities]}}}}]}
         end
       end
     end

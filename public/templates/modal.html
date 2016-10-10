@@ -21,14 +21,26 @@
 
           <div ng-repeat="member in card.users">
             <p><span>{{member.email}}</span>
-              <span ng-click="" style="float: right">remove</span>
+              <span ng-click="removeUser(member.id)" style="float: right">remove</span>
             </p>
           </div>
+        </div>
 
+        <div>
+          <form name="userForm" ng-submit="addUser()">
+            <label>
+              <select name="userPick" class="form-control" ng-options="user as user.email for user in users track by user.id" ng-model="selected" required>
+              </select>
+            </label>
+            <input class="btn btn-primary" type="submit" value="Add" ng-disabled="userForm.$invalid">
+          </form>
         </div><hr>
 
         <div>
           <h4>Activity</h4>
+          <p ng-repeat="activity in card.activities | orderBy: '-created_at'">
+            {{activity.person}} {{activity.activity}} {{activity.object}} <span ng-show="activity.description">to '{{activity.description}}' </span>on {{activity.created_at | date}}
+          </p>
         </div>
       </div>
 

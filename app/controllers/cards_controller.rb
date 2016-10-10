@@ -3,9 +3,10 @@ class CardsController < ApplicationController
   def create
     @card = Card.new(card_params)
     @card.users << current_user
+    @card.activities.build(person: current_user.email, activity: "created", object: "card")
     if @card.save
       respond_to do |format|
-        format.json {render json: @card}
+        format.json {render json: @card, include: [:users, :activities]}
       end
     end
   end
@@ -14,7 +15,7 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
     if @card.list.board.users.include?(current_user)
       respond_to do |format|
-        format.json {render json: @card}
+        format.json {render json: @card, include: [:users, :activities]}
       end
     end
   end
@@ -24,7 +25,7 @@ class CardsController < ApplicationController
     if @card.list.board.users.include?(current_user)
       if @card.update(card_params)
         respond_to do |format|
-          format.json {render json: @card}
+          format.json {render json: @card, include: [:users, :activities]}
         end
       end
     end
@@ -44,7 +45,7 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:title, :description, :list_id)
+    params.require(:card).permit(:title, :description, :list_id, :id, :updated_at, :created_at)
   end
 
 end
