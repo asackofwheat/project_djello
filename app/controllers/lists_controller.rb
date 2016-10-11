@@ -4,7 +4,7 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     if @list.save
       respond_to do |format|
-        format.json {render json: @list, include: :cards}
+        format.json {render json: @list, include: {cards: {include: [:users, :activities]}}}
       end
     end
   end
@@ -14,7 +14,7 @@ class ListsController < ApplicationController
     if @list.board.users.include?(current_user)
       if @list.update(list_params)
         respond_to do |format|
-          format.json {render json: @list, include: :cards}
+          format.json {render json: @list, include: {cards: {include: [:users, :activities]}}}
         end
       end
     end
